@@ -13,5 +13,10 @@ const flairSchema = new mongoose.Schema({
     ]
 }, {timestamps: true});
 
+flairSchema.pre('save', function (next) {
+    this.title = this.title.toLowerCase(),
+    next();
+})
+
 const Flair = mongoose.model('Flair', flairSchema);
 module.exports = Flair;

@@ -9,8 +9,8 @@ class PostService {
 
     async create(data) {
         const content = data.content;
-        let flairs = content.match(/#['a-z0-9_']+/g);     // this regex will extracts flairs
-        flairs = flairs.map((flair) => flair.substring(1));
+        let flairs = content.match(/#['a-z0-9_']+/g);
+        flairs = flairs.map((flair) => flair.substring(1)).map((flair) => flair.toLowerCase());
         const post = await this.postRepository.create(data);
         let alreadyPresentFlairs = await this.flairRepository.getByName(flairs);
         let titleOfPresentTags = alreadyPresentFlairs.map((flair) => flair.title);

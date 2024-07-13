@@ -1,4 +1,4 @@
-const Flair = require('../models/index');
+const {Flair} = require('../models/index');
 
 class FlairRepository {
     
