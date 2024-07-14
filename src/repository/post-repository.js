@@ -13,8 +13,17 @@ class PostRepository {
 
     async get(postId) {
         try {
-            const getPost = await Post.findById(postId);
+            const getPost = await Post.findById(postId).populate({path: 'likes'});
             return getPost;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async getAll() {
+        try {
+            const posts = await Post.find();
+            return posts;
         } catch (error) {
             throw error;
         }
