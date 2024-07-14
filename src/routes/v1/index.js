@@ -6,6 +6,10 @@ router.post(
     '/createpost',
     PostController.create
 )
+router.get(
+    '/posts/:id',
+    PostController.get
+)
 
 router.post(
     '/likes/toggle',

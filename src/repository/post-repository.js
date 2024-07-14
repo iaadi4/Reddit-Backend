@@ -31,7 +31,7 @@ class PostRepository {
 
     async getWithComments(postId) {
         try {
-            const postWithComment = await Post.find(postId).populate({path: 'comments'}).lean();
+            const postWithComment = await Post.findById(postId).populate({path: 'comments'}).lean();
             return postWithComment;
         } catch (error) {
             throw error;

@@ -20,6 +20,25 @@ const create = async (req, res) => {
     }
 }
 
+const get = async (req, res) => {
+    try {
+        const post = await postService.get(req.params.id);
+        return res.status(200).json({
+            data: post,
+            success: true,
+            message: 'Successfully fetched the post',
+            error: {}
+        });
+    } catch (error) {
+        return res.status(500).json({
+            data: {},
+            success: false,
+            message: error.message,
+        });
+    }
+}
+
 module.exports = {
-    create
+    create,
+    get
 }

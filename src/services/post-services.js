@@ -28,6 +28,11 @@ class PostService {
         })
         return post;
     }
+
+    async get(postId) {
+        const post = await this.postRepository.getWithComments(postId);
+        return post;
+    }
 }
 
 module.exports = PostService;
