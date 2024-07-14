@@ -1,10 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const {PostController} = require('../../controllers/index');
+const {PostController, LikeController} = require('../../controllers/index');
 
 router.post(
     '/createpost',
     PostController.create
+)
+
+router.post(
+    '/likes/toggle',
+    LikeController.toggleLike
 )
 
 module.exports = router;
