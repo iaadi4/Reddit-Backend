@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const {PostController, LikeController, CommentController} = require('../../controllers/index');
+const {PostController, LikeController, CommentController, AuthController} = require('../../controllers/index');
 
 router.post(
     '/createpost',
@@ -19,6 +19,11 @@ router.post(
 router.post(
     '/comments/create',
     CommentController.create
+)
+
+router.post(
+    '/signup',
+    AuthController.signup
 )
 
 module.exports = router;
