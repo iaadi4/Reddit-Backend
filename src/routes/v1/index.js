@@ -1,9 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const {PostController, LikeController, CommentController, AuthController} = require('../../controllers/index');
+const auth = require('../../middlewares/authentication');
 
 router.post(
     '/createpost',
+    auth,
     PostController.create
 )
 router.get(
@@ -13,11 +15,13 @@ router.get(
 
 router.post(
     '/likes/toggle',
+    auth,
     LikeController.toggleLike
 )
 
 router.post(
     '/comments/create',
+    auth,
     CommentController.create
 )
 
